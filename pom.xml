@@ -19,6 +19,27 @@
     </properties>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--&lt;!&ndash;            <version>5.7.1</version>&ndash;&gt;-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-engine</artifactId>-->
+<!--&lt;!&ndash;            <version>5.7.1</version>&ndash;&gt;-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.platform</groupId>-->
+<!--            <artifactId>junit-platform-launcher</artifactId>-->
+<!--&lt;!&ndash;            <version>1.7.1</version>&ndash;&gt;-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+
+
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>

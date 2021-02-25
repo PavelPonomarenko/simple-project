@@ -11,13 +11,15 @@ import lombok.NoArgsConstructor;
 public class ResponseUserDto {
 
     private Long id;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
 
     public static ResponseUserDto FromUserToDto(User user) {
         ResponseUserDto userDto = new ResponseUserDto();
         userDto.setId(user.getId());
-        userDto.setUsername(user.getUsername());
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
         userDto.setEmail(user.getEmail());
         return userDto;
     }

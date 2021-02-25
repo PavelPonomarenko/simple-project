@@ -7,15 +7,82 @@
 
     <changeSet author="Pavel" id="insert_users">
         <insert tableName="users">
+            <column name="first_name" value="Pavel"/>
+            <column name="last_name" value="Pavlov"/>
+            <column name="birthday" valueDate="12-12-1990"/>
+            <column name="creation_date" valueDate="now()"/>
             <column name="username" value="admin"/>
             <column name="email" value="ponomarenko2008@gmail.com"/>
             <column name="password" value="1111"/>
         </insert>
         <insert tableName="users">
+            <column name="first_name" value="Ivan"/>
+            <column name="last_name" value="Ivanov"/>
+            <column name="birthday" valueDate="12-12-1990"/>
+            <column name="creation_date" valueDate="now()"/>
             <column name="username" value="user"/>
             <column name="email" value="ponomarenko.kyiv@gmail.com"/>
             <column name="password" value="2222"/>
         </insert>
+        <insert tableName="users">
+            <column name="first_name" value="Andrey"/>
+            <column name="last_name" value="Andreev"/>
+            <column name="birthday" valueDate="12-12-1985"/>
+            <column name="creation_date" valueDate="now()"/>
+            <column name="username" value="user1"/>
+            <column name="email" value="andreev@gmail.com"/>
+            <column name="password" value="3333"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="Pavel" id="insert_hobbies">
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Reading"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Swimming"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Traveling"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Gardening"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Cooking"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Computer games"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Chess"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Poetry"/>
+        </insert>
+        <insert tableName="hobbies">
+            <column name="hobby_id" value="Programming"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="Pavel" id="insert_user_til_detail">
+        <insert tableName="user_tel_details">
+            <column name="tel_type" value="Mobile"/>
+            <column name="tel_number" value="0671112233"/>
+            <column name="creation_date" valueDate="now()"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="user_tel_details">
+            <column name="tel_type" value="Home"/>
+            <column name="tel_number" value="0952225588"/>
+            <column name="creation_date" valueDate="now()"/>
+            <column name="user_id" value="2"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>
+
+
+
+
+

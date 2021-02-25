@@ -10,14 +10,58 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
+            <column name="first_name" type="VARCHAR(255)">
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+            </column>
+            <column name="birthday" type="date">
+            </column>
+            <column name="creation_date" type="date">
+            </column>
             <column name="username" type="VARCHAR(255)">
-                <constraints unique="true"/>
+                <constraints unique="true" notNullConstraintName="UQ_users_username"/>
             </column>
             <column name="email" type="VARCHAR(255)">
-                <constraints unique="true"/>
+                <constraints unique="true" notNullConstraintName="UQ_users_email"/>
             </column>
             <column name="password" type="VARCHAR(255)">
-                <constraints unique="true"/>
+                <constraints unique="true" notNullConstraintName="UQ_users_password"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Pavel" id="0.0.2">
+        <createTable tableName="hobbies">
+            <column name="hobby_id" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Pavel" id="0.0.3">
+        <createTable tableName="user_tel_details">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="tel_type" type="VARCHAR(255)">
+            </column>
+            <column name="tel_number" type="VARCHAR(255)">
+            </column>
+            <column name="creation_date" type="timestamp">
+            </column>
+            <column name="user_id" type="INT">
+                <constraints foreignKeyName="FK_user_tel_detail_users" references="users(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Pavel" id="0.0.4">
+        <createTable tableName="users_hobbies">
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="FK_users_hobbies_users" references="users(id)"/>
+            </column>
+            <column name="hobby_id" type="BIGINT">
+                <constraints foreignKeyName="FK_users_hobbies_hobbies" references="hobbies(hobby_id)"/>
             </column>
         </createTable>
     </changeSet>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -38,7 +37,7 @@ public class UserRestController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<ResponseUserDto> getEmployeeById(@PathVariable(name = "userId") Long userId) {
+    public ResponseEntity<Object> getEmployeeById(@PathVariable(name = "userId") Long userId) {
         ResponseUserDto userDto = userService.getOne(userId);
         if (userDto == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -61,4 +60,5 @@ public class UserRestController {
     public void updateUser(@PathVariable Long id, @RequestBody User user) {
         userService.update(id, user);
     }
+
 }
