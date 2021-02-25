@@ -37,31 +37,31 @@
 
     <changeSet author="Pavel" id="insert_hobbies">
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Reading"/>
+            <column name="name" value="Reading"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Swimming"/>
+            <column name="name" value="Swimming"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Traveling"/>
+            <column name="name" value="Traveling"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Gardening"/>
+            <column name="name" value="Gardening"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Cooking"/>
+            <column name="name" value="Cooking"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Computer games"/>
+            <column name="name" value="Computer games"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Chess"/>
+            <column name="name" value="Chess"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Poetry"/>
+            <column name="name" value="Poetry"/>
         </insert>
         <insert tableName="hobbies">
-            <column name="hobby_id" value="Programming"/>
+            <column name="name" value="Programming"/>
         </insert>
     </changeSet>
 

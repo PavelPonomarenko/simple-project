@@ -32,8 +32,10 @@
 
     <changeSet author="Pavel" id="0.0.2">
         <createTable tableName="hobbies">
-            <column name="hobby_id" type="VARCHAR(255)">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
             </column>
         </createTable>
     </changeSet>
@@ -61,7 +63,7 @@
                 <constraints foreignKeyName="FK_users_hobbies_users" references="users(id)"/>
             </column>
             <column name="hobby_id" type="BIGINT">
-                <constraints foreignKeyName="FK_users_hobbies_hobbies" references="hobbies(hobby_id)"/>
+                <constraints foreignKeyName="FK_users_hobbies_hobbies" references="hobbies(id)"/>
             </column>
         </createTable>
     </changeSet>

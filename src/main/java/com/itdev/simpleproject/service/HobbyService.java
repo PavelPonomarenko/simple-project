@@ -10,9 +10,9 @@ import java.util.List;
 public interface HobbyService {
     List<Hobby> getAll();
 
-    Hobby getOne(String name);
+    Hobby getOne(Long id);
 
-    void deleteOne(String name);
+    void deleteOne(Long id);
 
     Hobby save(Hobby hobby);
 

@@ -6,11 +6,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,8 +25,13 @@ import java.util.Set;
 public class Hobby {
 
     @Id
-    @Column(name = "hobby_id")
-    private String hobbyId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
+    @Max(value = 50)
+    private String name;
 
     @ManyToMany
     @JoinTable(name = "users_hobbies",
