@@ -8,6 +8,7 @@ import java.util.List;
 
 
 public interface HobbyService {
+
     List<Hobby> getAll();
 
     Hobby getOne(Long id);

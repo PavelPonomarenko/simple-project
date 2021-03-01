@@ -80,6 +80,25 @@
         </insert>
     </changeSet>
 
+    <changeSet author="Pavel" id="insert_users_hobbies">
+        <insert tableName="users_hobbies">
+            <column name="user_id" value="1"/>
+            <column name="hobby_id" value="1"/>
+        </insert>
+        <insert tableName="users_hobbies">
+            <column name="user_id" value="1"/>
+            <column name="hobby_id" value="2"/>
+        </insert>
+        <insert tableName="users_hobbies">
+            <column name="user_id" value="1"/>
+            <column name="hobby_id" value="3"/>
+        </insert>
+        <insert tableName="users_hobbies">
+            <column name="user_id" value="2"/>
+            <column name="hobby_id" value="2"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>
 
 

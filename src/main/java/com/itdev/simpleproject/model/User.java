@@ -19,58 +19,62 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode (of = "id")
 @Entity
-@Table(name = "users")
+@Table (name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name = "id")
     private Long id;
 
-    @Column(name = "first_name")
+    @Column (name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column (name = "last_name")
     private String lastName;
 
-    @Column(name = "birthday")
+    @Column (name = "birthday")
     private LocalDate birthDay;
 
-    @Column(name = "creation_date")
+    @Column (name = "creation_date")
     private LocalDate creationDate;
 
     @NotNull
-    @Column(name = "username", unique = true)
+    @Column (name = "username", unique = true)
+    @Min (value = 2)
     private String username;
 
     @NotNull
     @Email
-    @Column(name = "email", unique = true)
+    @Column (name = "email", unique = true)
     private String email;
 
     @NotNull
-    @Column(name = "password", unique = true)
+    @Column (name = "password", unique = true)
+    @Min (value = 2)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UserTelDetail> set = new HashSet<>();
+    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set <UserTelDetail> set = new HashSet <>();
 
     @ManyToMany
-    @JoinTable(name = "users_hobbies",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "hobby_id"))
-    private Set<Hobby> hobbies = new HashSet<>();
-
+    @JoinTable (name = "users_hobbies",
+            joinColumns = @JoinColumn (name = "user_id"),
+            inverseJoinColumns = @JoinColumn (name = "hobby_id"))
+    private Set <Hobby> hobbies = new HashSet <>();
 
 }

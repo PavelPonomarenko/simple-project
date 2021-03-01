@@ -2,6 +2,7 @@ package com.itdev.simpleproject.controller;
 
 import com.itdev.simpleproject.dto.ResponseUserDto;
 import com.itdev.simpleproject.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "/api/v1/hobbies")
+@RequestMapping (path = "/api/v1/hobbies")
+@Slf4j
 public class HobbyRestController {
 
     private final HobbyService hobbyService;
@@ -29,35 +31,33 @@ public class HobbyRestController {
         this.hobbyService = hobbyService;
     }
 
-
-    @GetMapping("/all")
-    public ResponseEntity<List<Hobby>> getAllHobbies() {
-        List<Hobby> hobbyList = hobbyService.getAll();
+    @GetMapping ("/all")
+    public ResponseEntity <List <Hobby>> getAllHobbies() {
+        List <Hobby> hobbyList = hobbyService.getAll();
         if (hobbyList == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity <>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(hobbyList, HttpStatus.OK);
+        return new ResponseEntity <>(hobbyList, HttpStatus.OK);
     }
 
-    @GetMapping("/{hobbyId}")
-    public ResponseEntity<Hobby> getEmployeeById(@PathVariable(name = "hobbyId") Long hobbyId) {
+    @GetMapping ("/{hobbyId}")
+    public ResponseEntity <Hobby> getHobbyById(@PathVariable (name = "hobbyId") Long hobbyId) {
         Hobby hobby = hobbyService.getOne(hobbyId);
         if (hobby == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity <>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(hobby, HttpStatus.OK);
+        log.info("Hobby with id = " + hobbyId + " RETURN");
+        return new ResponseEntity <>(hobby, HttpStatus.OK);
     }
 
-    @PostMapping("delete/{hobbyId}")
-    public void deleteHobby(@PathVariable(name = "hobbyId") Long hobbyId) {
+    @PostMapping ("delete/{hobbyId}")
+    public void deleteHobby(@PathVariable (name = "hobbyId") Long hobbyId) {
         hobbyService.deleteOne(hobbyId);
     }
 
-    @PostMapping("/create/hobby")
+    @PostMapping ("/create/hobby")
     ResponseEntity createHobby(@RequestBody Hobby newHobby) {
         hobbyService.save(newHobby);
         return new ResponseEntity(HttpStatus.OK);
     }
-
-
 }

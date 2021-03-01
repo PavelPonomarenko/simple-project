@@ -8,6 +8,7 @@
         <version>2.4.3</version>
         <relativePath/>
     </parent>
+
     <groupId>com.itdev</groupId>
     <artifactId>simpleproject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -51,12 +52,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -76,6 +77,7 @@
                         <phase>process-resources</phase>
                         <configuration>
                             <propertyFile>src/main/resources/liquibase-h2.properties</propertyFile>
+                            <changeLogFile>classpath:db.changelog-master.xml</changeLogFile>
                         </configuration>
                         <goals>
                             <goal>update</goal>

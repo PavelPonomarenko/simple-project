@@ -1,7 +1,9 @@
 package com.itdev.simpleproject.controller;
 
 import com.itdev.simpleproject.dto.ResponseUserDto;
+import com.itdev.simpleproject.dto.ResponseUserWithDetailsDto;
 import com.itdev.simpleproject.model.User;
+import com.itdev.simpleproject.service.HelperUserService;
 import com.itdev.simpleproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,48 +19,61 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/v1/users")
+@RequestMapping (path = "/api/v1/users")
 public class UserRestController {
 
     private final UserService userService;
+    private final HelperUserService helperUserService;
 
     @Autowired
-    public UserRestController(UserService userService) {
+    public UserRestController(UserService userService, HelperUserService helperUserService) {
         this.userService = userService;
+        this.helperUserService = helperUserService;
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<ResponseUserDto>> getAllUsers() {
-        List<ResponseUserDto> users = userService.getAll();
+    @GetMapping ("/all")
+    public ResponseEntity <List <ResponseUserDto>> getAllUsers() {
+        List <ResponseUserDto> users = userService.getAll();
         if (users == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity <>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(users, HttpStatus.OK);
+        return new ResponseEntity <>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<Object> getEmployeeById(@PathVariable(name = "userId") Long userId) {
+    @GetMapping ("/{userId}")
+    public ResponseEntity <Object> getEmployeeById(@PathVariable (name = "userId") Long userId) {
         ResponseUserDto userDto = userService.getOne(userId);
         if (userDto == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity <>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
+        return new ResponseEntity <>(userDto, HttpStatus.OK);
     }
 
-    @PostMapping("delete/{userId}")
-    public void deleteUser(@PathVariable(name = "userId") Long userId) {
+    @PostMapping ("delete/{userId}")
+    public void deleteUser(@PathVariable (name = "userId") Long userId) {
         userService.deleteOne(userId);
     }
 
-    @PostMapping("/create/newUser")
+    @PostMapping ("/create/newUser")
     ResponseEntity createUser(@RequestBody User newUser) {
         userService.save(newUser);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping ("/update/{id}")
     public void updateUser(@PathVariable Long id, @RequestBody User user) {
         userService.update(id, user);
     }
+
+
+    @GetMapping ("/allWith")
+    public ResponseEntity <List <ResponseUserWithDetailsDto>> getAllUsersWithDetails() {
+        List <ResponseUserWithDetailsDto> users = helperUserService.getAllUserWithDetails();
+        if (users == null) {
+            return new ResponseEntity <>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity <>(users, HttpStatus.OK);
+    }
+
 
 }
